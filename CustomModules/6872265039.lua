@@ -23,7 +23,7 @@ local function GetURL(scripturl)
 	if shared.VapeDeveloper then
 		return readfile("vape/"..scripturl)
 	else
-		return game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/"..scripturl, true)
+		return game:HttpGet("https://raw.githubusercontent.com/114S14/vapevoidware/main/"..scripturl, true)
 	end
 end
 local bettergetfocus = function()
@@ -53,7 +53,7 @@ local requestfunc = syn and syn.request or http and http.request or http_request
 		}
 	else
 		return {
-			Body = "bad exploit",
+			Body = "利用床",
 			Headers = {},
 			StatusCode = 404
 		}
@@ -78,7 +78,7 @@ local function GetURL(scripturl)
 	if shared.VapeDeveloper then
 		return readfile("vape/"..scripturl)
 	else
-		return game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/"..scripturl, true)
+		return game:HttpGet("https://raw.githubusercontent.com/114S14/vapevoidware/main/"..scripturl, true)
 	end
 end
 
@@ -194,7 +194,7 @@ local function getcustomassetfunc(path)
 			textlabel:Remove()
 		end)
 		local req = requestfunc({
-			Url = "https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/"..path:gsub("vape/assets", "assets"),
+			Url = "https://raw.githubusercontent.com/114S14/vapevoidware/main/"..path:gsub("vape/assets", "assets"),
 			Method = "GET"
 		})
 		writefile(path, req.Body)
@@ -321,7 +321,7 @@ end)
 
 local Sprint = {["Enabled"] = false}
 Sprint = GuiLibrary["ObjectsThatCanBeSaved"]["CombatWindow"]["Api"].CreateOptionsButton({
-	["Name"] = "Sprint",
+	["Name"] = "冲刺",
 	["Function"] = function(callback)
 		if callback then
 			spawn(function()
@@ -334,7 +334,7 @@ Sprint = GuiLibrary["ObjectsThatCanBeSaved"]["CombatWindow"]["Api"].CreateOption
 			end)
 		end
 	end,
-	["HoverText"] = "Sets your sprinting to true."
+	["HoverText"] = "将你的冲刺设置为真实状态"
 })
 
 GuiLibrary["RemoveObject"]("FlyOptionsButton")
@@ -360,7 +360,7 @@ runcode(function()
 	local flytog = false
 	local flytogtick = tick()
 	fly = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "Fly",
+		["Name"] = "飞行",
 		["Function"] = function(callback)
 			if callback then
 				--buyballoons()
@@ -402,24 +402,24 @@ runcode(function()
 				RunLoops:UnbindFromHeartbeat("Fly")
 			end
 		end,
-		["HoverText"] = "Makes you go zoom (Balloons or TNT Required)"
+		["HoverText"] = "让你加速（需要气球或TNT"
 	})
 	flyspeed = fly.CreateSlider({
-		["Name"] = "Speed",
+		["Name"] = "速度",
 		["Min"] = 1,
 		["Max"] = 23,
 		["Function"] = function(val) end,
 		["Default"] = 23
 	})
 	flyverticalspeed = fly.CreateSlider({
-		["Name"] = "Vertical Speed",
+		["Name"] = "垂直速度",
 		["Min"] = 1,
 		["Max"] = 100,
 		["Function"] = function(val) end,
 		["Default"] = 44
 	})
 	flyupanddown = fly.CreateToggle({
-		["Name"] = "Y Level",
+		["Name"] = "Y轴层级",
 		["Function"] = function() end,
 		["Default"] = true
 	})
@@ -445,7 +445,7 @@ local JoinQueueTypes = {["Value"] = ""}
 local JoinQueueDelay = {["Value"] = 1}
 local firstqueue = true
 JoinQueue = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-	["Name"] = "AutoQueue",
+	["Name"] = "自动加入队列",
 	["Function"] = function(callback)
 		if callback then
 			spawn(function()
@@ -485,7 +485,7 @@ JoinQueue = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOp
 	end
 })
 JoinQueueTypes = JoinQueue.CreateDropdown({
-	["Name"] = "Mode",
+	["Name"] = "模式",
 	["List"] = QueueTypes,
 	["Function"] = function(val)
 		if JoinQueue["Enabled"] and firstqueue == false then
@@ -495,7 +495,7 @@ JoinQueueTypes = JoinQueue.CreateDropdown({
 	end
 })
 JoinQueueDelay = JoinQueue.CreateSlider({
-	["Name"] = "Delay",
+	["Name"] = "延迟",
 	["Min"] = 1,
 	["Max"] = 10,
 	["Function"] = function(val) end,
@@ -541,7 +541,7 @@ runcode(function()
 		ownedkits[bedwars["KitMeta"][v3.kitType].name:lower()] = v3.kitType
 	end
 	AutoKit = GuiLibrary["ObjectsThatCanBeSaved"]["UtilityWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "AutoKit",
+		["Name"] = "自动装备",
 		["Function"] = function(callback)
 			if callback then
 				spawn(function()
@@ -578,15 +578,15 @@ runcode(function()
 		["HoverText"] = "Automatically Equips kits in a list."
 	})
 	AutoKitTextList = AutoKit.CreateTextList({
-		["Name"] = "KitList",
-		["TempText"] = "kit name : prio : kitskin",
+		["Name"] = "套装列表",
+		["TempText"] = "套装名称：优先级：套装皮肤",
 	})
 end)
 
 runcode(function()
 	local CameraFix = {["Enabled"] = false}
 	CameraFix = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "CameraFix",
+		["Name"] = "相机修复",
 		["Function"] = function(callback)
 			if callback then
 				spawn(function()
@@ -598,7 +598,7 @@ runcode(function()
 				end)
 			end
 		end,
-		["HoverText"] = "Fixes third person camera face bug"
+		["HoverText"] = "修复第三人称相机面部bug"
 	})
 end)
 
@@ -618,7 +618,7 @@ runcode(function()
 	local bodyvelo
 	local raycastparameters = RaycastParams.new()
 	speed = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "Speed",
+		["Name"] = "速度",
 		["Function"] = function(callback)
 			if callback then
 				local lastnear = false
@@ -683,11 +683,11 @@ runcode(function()
 				end
 			end
 		end,
-		["HoverText"] = "Increases your movement."
+		["HoverText"] = "增加你的移动速度"
 	})
 	speedmode = speed.CreateDropdown({
-		["Name"] = "Mode",
-		["List"] = {"Normal", "CFrame"},
+		["Name"] = "模式",
+		["List"] = {"正常", "坐标框"},
 		["Function"] = function(val)
 			if speedspeedup["Object"] then
 				speedspeedup["Object"].Visible = val == "CFrame"
@@ -698,21 +698,21 @@ runcode(function()
 		end
 	})
 	speedval = speed.CreateSlider({
-		["Name"] = "Speed",
+		["Name"] = "速度",
 		["Min"] = 1,
 		["Max"] = 23,
 		["Function"] = function(val) end,
 		["Default"] = 23
 	})
 	speedjumpheight = speed.CreateSlider({
-		["Name"] = "Jump Height",
+		["Name"] = "跳跃高度",
 		["Min"] = 0,
 		["Max"] = 30,
 		["Default"] = 25,
 		["Function"] = function() end
 	})
 	speedjump = speed.CreateToggle({
-		["Name"] = "AutoJump",
+		["Name"] = "自动跳跃",
 		["Function"] = function(callback)
 			if speedjumpalways["Object"] then
 				speedjump["Object"].ToggleArrow.Visible = callback
@@ -722,17 +722,17 @@ runcode(function()
 		["Default"] = true
 	})
 	speedjumpalways = speed.CreateToggle({
-		["Name"] = "Always Jump",
+		["Name"] = "一直跳",
 		["Function"] = function() end
 	})
 	speedspeedup = speed.CreateToggle({
-		["Name"] = "Speedup",
+		["Name"] = "加速",
 		["Function"] = function() end,
-		["HoverText"] = "Speeds up when using killaura."
+		["HoverText"] = "使用杀戮光环（Killaura）时加速"
 	})
 	speedspeedup["Object"].Visible = speedmode["Value"] == "CFrame"
 	speedanimation = speed.CreateToggle({
-		["Name"] = "Slowdown Anim",
+		["Name"] = "减少动画",
 		["Function"] = function() end
 	})
 	speedjumpalways["Object"].BackgroundTransparency = 0
@@ -1221,7 +1221,7 @@ runcode(function()
 		end
 	})
 	themeselected = OldBedwars.CreateDropdown({
-		["Name"] = "Theme",
+		["Name"] = "主题",
 		["Function"] = function() end,
 		["List"] = {"Old", "Winter", "Halloween", "Valentines"}
 	})
@@ -1419,20 +1419,20 @@ task.spawn(function()
 		pcall(function()
 			if not isfile("vape/Profiles/bedwarsdata.txt") then
 				local commit = "main"
-				for i,v in pairs(game:HttpGet("https://github.com/VapeVoidware/vapevoidware"):split("\n")) do
+				for i,v in pairs(game:HttpGet("https://github.com/114S14/vapevoidware"):split("\n")) do
 					if v:find("commit") and v:find("fragment") then
 						local str = v:split("/")[5]
 						commit = str:sub(0, str:find('"') - 1)
 						break
 					end
 				end
-				writefile("vape/Profiles/bedwarsdata.txt", game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/"..commit.."/CustomModules/bedwarsdata", true))
+				writefile("vape/Profiles/bedwarsdata.txt", game:HttpGet("https://raw.githubusercontent.com/114S14/vapevoidware/"..commit.."/CustomModules/bedwarsdata", true))
 			end
 			local olddata = readfile("vape/Profiles/bedwarsdata.txt")
 
 			repeat
 				local commit = "main"
-				for i,v in pairs(game:HttpGet("https://github.com/VapeVoidware/vapevoidware"):split("\n")) do
+				for i,v in pairs(game:HttpGet("https://github.com/114S14/vapevoidware"):split("\n")) do
 					if v:find("commit") and v:find("fragment") then
 						local str = v:split("/")[5]
 						commit = str:sub(0, str:find('"') - 1)
@@ -1440,7 +1440,7 @@ task.spawn(function()
 					end
 				end
 
-				local newdata = game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/"..commit.."/CustomModules/bedwarsdata", true)
+				local newdata = game:HttpGet("https://raw.githubusercontent.com/114S14/vapevoidware/"..commit.."/CustomModules/bedwarsdata", true)
 				if newdata ~= olddata then
 					rundata(game:GetService("HttpService"):JSONDecode(newdata), game:GetService("HttpService"):JSONDecode(olddata))
 					olddata = newdata
