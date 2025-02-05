@@ -4392,13 +4392,13 @@ run(function()
 	local NoFall = {Enabled = false}
 	local oldfall
 	NoFall = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-		Name = "NoFall",
+		Name = "防坠",
 		Function = function(callback)
 			if callback then
 				bedwars.Client:Get("GroundHit"):SendToServer()
 			end
 		end,
-		HoverText = "Prevents taking fall damage."
+		HoverText = "防止坠落伤害."
 	})
 end)
 
@@ -4406,7 +4406,7 @@ run(function()
 	local NoSlowdown = {Enabled = false}
 	local OldSetSpeedFunc
 	NoSlowdown = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-		Name = "NoSlowdown",
+		Name = "无减速",
 		Function = function(callback)
 			if callback then
 				OldSetSpeedFunc = bedwars.SprintController.setSpeed
@@ -4423,7 +4423,7 @@ run(function()
 				OldSetSpeedFunc = nil
 			end
 		end,
-		HoverText = "Prevents slowing down when using items."
+		HoverText = "使用物品时防止减速"
 	})
 end)
 
@@ -4449,7 +4449,7 @@ run(function()
 	end
 
 	Phase = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-		Name = "Phase",
+		Name = "相位",
 		Function = function(callback)
 			if callback then
 				RunLoops:BindToHeartbeat("Phase", function()
@@ -4495,7 +4495,7 @@ run(function()
 	local old
 	
 	local ProjectileAimbot = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-		Name = 'ProjectileAimbot',
+		Name = '投射物自动瞄准',
 		Function = function(callback)
 			if callback then
 				old = bedwars.ProjectileController.calculateImportantLaunchValues
@@ -4555,23 +4555,23 @@ run(function()
 				bedwars.ProjectileController.calculateImportantLaunchValues = old
 			end
 		end,
-		HoverText = 'Silently adjusts your aim towards the enemy'
+		HoverText = '静默调整你的瞄准方向，指向敌人'
 	})
 	Targets = ProjectileAimbot.CreateTargetWindow({})
 	TargetPart = ProjectileAimbot.CreateDropdown({
-		Name = 'Part',
+		Name = '部分',
 		List = {'RootPart', 'Head'},
 		Function = function() end
 	})
 	FOV = ProjectileAimbot.CreateSlider({
-		Name = 'FOV',
+		Name = '广角',
 		Min = 1,
 		Max = 1000,
 		Default = 1000,
 		Function = function() end
 	})
 	OtherProjectiles = ProjectileAimbot.CreateToggle({
-		Name = 'Other Projectiles',
+		Name = '其他投射物',
 		Default = true,
 		Function = function() end
 	})
@@ -4616,7 +4616,7 @@ run(function()
 	end
 	
 	ProjectileAura = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-		Name = 'ProjectileAura',
+		Name = '投射物光环',
 		Function = function(callback)
 			if callback then
 				repeat
@@ -4670,11 +4670,11 @@ run(function()
 				until not ProjectileAura.Enabled
 			end
 		end,
-		HoverText = 'Shoots people around you'
+		HoverText = '射击周围的人'
 	})
 	Targets = ProjectileAura.CreateTargetWindow({})
 	Range = ProjectileAura.CreateSlider({
-		Name = 'Range',
+		Name = '范围',
 		Min = 1,
 		Max = 50,
 		Default = 50,
@@ -4756,7 +4756,7 @@ run(function()
 
 	local oldspeed
 	Scaffold = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-		Name = "Scaffold",
+		Name = "自动搭方块",
 		Function = function(callback)
 			if callback then
 				scaffoldtext.Visible = ScaffoldBlockCount.Enabled
@@ -4829,23 +4829,23 @@ run(function()
 				oldpos2 = Vector3.zero
 			end
 		end,
-		HoverText = "Helps you make bridges/scaffold walk."
+		HoverText = "帮助你搭建桥梁/脚手架行走."
 	})
 	ScaffoldExpand = Scaffold.CreateSlider({
-		Name = "Expand",
+		Name = "建造扩展",
 		Min = 1,
 		Max = 8,
 		Function = function(val) end,
 		Default = 1,
-		HoverText = "Build range"
+		HoverText = "建造范围"
 	})
 	ScaffoldDiagonal = Scaffold.CreateToggle({
-		Name = "Diagonal",
+		Name = "对角线",
 		Function = function(callback) end,
 		Default = true
 	})
 	ScaffoldTower = Scaffold.CreateToggle({
-		Name = "Tower",
+		Name = "塔",
 		Function = function(callback)
 			if ScaffoldStopMotion.Object then
 				ScaffoldTower.Object.ToggleArrow.Visible = callback
@@ -4854,40 +4854,40 @@ run(function()
 		end
 	})
 	ScaffoldMouseCheck = Scaffold.CreateToggle({
-		Name = "Require mouse down",
+		Name = "需要按下鼠标",
 		Function = function(callback) end,
-		HoverText = "Only places when left click is held.",
+		HoverText = "仅在按住左键时放置",
 	})
 	ScaffoldDownwards  = Scaffold.CreateToggle({
-		Name = "Downwards",
+		Name = "向下",
 		Function = function(callback) end,
-		HoverText = "Goes down when left shift is held."
+		HoverText = "按住左Shift键时向下"
 	})
 	ScaffoldStopMotion = Scaffold.CreateToggle({
-		Name = "Stop Motion",
+		Name = "定格动画",
 		Function = function() end,
-		HoverText = "Stops your movement when going up"
+		HoverText = "在向上时停止你的移动"
 	})
 	ScaffoldStopMotion.Object.BackgroundTransparency = 0
 	ScaffoldStopMotion.Object.BorderSizePixel = 0
 	ScaffoldStopMotion.Object.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 	ScaffoldStopMotion.Object.Visible = ScaffoldTower.Enabled
 	ScaffoldBlockCount = Scaffold.CreateToggle({
-		Name = "Block Count",
+		Name = "方块计数",
 		Function = function(callback)
 			if Scaffold.Enabled then
 				scaffoldtext.Visible = callback
 			end
 		end,
-		HoverText = "Shows the amount of blocks in the middle."
+		HoverText = "傻逼"
 	})
 	ScaffoldHandCheck = Scaffold.CreateToggle({
-		Name = "Whitelist Only",
+		Name = "仅限白名单",
 		Function = function() end,
-		HoverText = "Only builds with blocks in your hand."
+		HoverText = "仅使用手中的方块进行建造"
 	})
 	ScaffoldAnimation = Scaffold.CreateToggle({
-		Name = "Animation",
+		Name = "动画",
 		Function = function() end
 	})
 end)
@@ -5031,7 +5031,7 @@ run(function()
 
 	local alternatelist = {"Normal", "AntiCheat A", "AntiCheat B"}
 	Speed = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-		Name = "Speed",
+		Name = "速度",
 		Function = function(callback)
 			if callback then
 				shared.SpeedBoostEnabled = SpeedDamageBoost.Enabled
@@ -5084,35 +5084,35 @@ run(function()
 				RunLoops:UnbindFromHeartbeat("Speed")
 			end
 		end,
-		HoverText = "Increases your movement.",
+		HoverText = "增加你的移动速度",
 		ExtraText = function()
-			return "Heatseeker"
+			return "热追踪"
 		end
 	})
 	Speed.Restart = function()
 		if Speed.Enabled then Speed.ToggleButton(false); Speed.ToggleButton(false) end
 	end
 	SpeedDamageBoost = Speed.CreateToggle({
-		Name = "Damage Boost",
+		Name = "伤害提升",
 		Function = Speed.Restart,
 		Default = true
 	})
 	SpeedValue = Speed.CreateSlider({
-		Name = "Speed",
+		Name = "速度",
 		Min = 1,
 		Max = 23.3,
 		Function = function(val) end,
 		Default = 23
 	})
 	SpeedValueLarge = Speed.CreateSlider({
-		Name = "Big Mode Speed",
+		Name = "大模式速度",
 		Min = 1,
 		Max = 23,
 		Function = function(val) end,
 		Default = 23
 	})
 	SpeedJump = Speed.CreateToggle({
-		Name = "AutoJump",
+		Name = "自动跳跃",
 		Function = function(callback)
 			if SpeedJumpHeight.Object then SpeedJumpHeight.Object.Visible = callback end
 			if SpeedJumpAlways.Object then
@@ -5125,26 +5125,26 @@ run(function()
 		Default = true
 	})
 	SpeedJumpHeight = Speed.CreateSlider({
-		Name = "Jump Height",
+		Name = "跳跃高度",
 		Min = 0,
 		Max = 30,
 		Default = 25,
 		Function = function() end
 	})
 	SpeedJumpAlways = Speed.CreateToggle({
-		Name = "Always Jump",
+		Name = "一直跳",
 		Function = function() end
 	})
 	SpeedJumpSound = Speed.CreateToggle({
-		Name = "Jump Sound",
+		Name = "跳跃音效",
 		Function = function() end
 	})
 	SpeedJumpVanilla = Speed.CreateToggle({
-		Name = "Real Jump",
+		Name = "真实跳跃",
 		Function = function() end
 	})
 	SpeedAnimation = Speed.CreateToggle({
-		Name = "Slowdown Anim",
+		Name = "慢动作",
 		Function = function() end
 	})
 end)
@@ -5160,7 +5160,7 @@ run(function()
 	local SpiderMode = {Value = "Normal"}
 	local SpiderPart
 	Spider = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-		Name = "Spider",
+		Name = "爬墙",
 		Function = function(callback)
 			if callback then
 				table.insert(Spider.Connections, inputService.InputBegan:Connect(function(input1)
@@ -5215,17 +5215,17 @@ run(function()
 				holdingshift = false
 			end
 		end,
-		HoverText = "Lets you climb up walls"
+		HoverText = "可以爬到墙上"
 	})
 	SpiderMode = Spider.CreateDropdown({
-		Name = "Mode",
-		List = {"Normal", "Classic"},
+		Name = "模式",
+		List = {"正常", "经典"},
 		Function = function()
 			if SpiderPart then SpiderPart:Destroy() end
 		end
 	})
 	SpiderSpeed = Spider.CreateSlider({
-		Name = "Speed",
+		Name = "速度",
 		Min = 0,
 		Max = 40,
 		Function = function() end,
@@ -5240,7 +5240,7 @@ run(function()
 	local controlmodule
 	local block
 	TargetStrafe = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-		Name = "TargetStrafe",
+		Name = "环绕",
 		Function = function(callback)
 			if callback then
 				task.spawn(function()
@@ -5293,7 +5293,7 @@ run(function()
 		end
 	})
 	TargetStrafeRange = TargetStrafe.CreateSlider({
-		Name = "Range",
+		Name = "范围",
 		Min = 0,
 		Max = 18,
 		Function = function() end
@@ -5310,7 +5310,7 @@ run(function()
 	local BedESPTransparency = {Value = 1}
 	local BedESPOnTop = {Enabled = true}
 	BedESP = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		Name = "BedESP",
+		Name = "床ESP",
 		Function = function(callback)
 			if callback then
 				table.insert(BedESP.Connections, collectionService:GetInstanceAddedSignal("bed"):Connect(function(bed)
@@ -5360,7 +5360,7 @@ run(function()
 				table.clear(BedESPTable)
 			end
 		end,
-		HoverText = "Render Beds through walls"
+		HoverText = "让你能通过方块看的床
 	})
 end)
 
@@ -5459,7 +5459,7 @@ run(function()
 	end
 
 	BedPlates = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		Name = "BedPlates",
+		Name = "床板",
 		Function = function(callback)
 			if callback then
 				table.insert(BedPlates.Connections, vapeEvents.PlaceBlockEvent.Event:Connect(function(p5)
@@ -5579,7 +5579,7 @@ run(function()
 	end
 
 	ChestESP = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		Name = 'ChestESP',
+		Name = '胸部ESP',
 		Function = function(calling)
 			if calling then
 				task.spawn(function()
@@ -5592,8 +5592,8 @@ run(function()
 		end
 	})
 	ChestESPList = ChestESP.CreateTextList({
-		Name = 'ItemList',
-		TempText = 'item or part of item',
+		Name = '项目列表',
+		TempText = '物品或物品的一部分',
 		AddFunction = function()
 			if ChestESP.Enabled then 
 				ChestESP.ToggleButton(false)
@@ -5626,7 +5626,7 @@ run(function()
 	local FieldOfView = {Enabled = false}
 	local FieldOfViewZoom = {Enabled = false}
 	FieldOfView = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		Name = "FOVChanger",
+		Name = "广角调节器",
 		Function = function(callback)
 			if callback then
 				if FieldOfViewZoom.Enabled then
@@ -5651,7 +5651,7 @@ run(function()
 		end
 	})
 	FieldOfViewValue = FieldOfView.CreateSlider({
-		Name = "FOV",
+		Name = "广角",
 		Min = 30,
 		Max = 120,
 		Function = function(val)
@@ -6220,7 +6220,7 @@ run(function()
 	}
 
 	GameTheme = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		Name = "GameTheme",
+		Name = "游戏主题",
 		Function = function(callback)
 			if callback then
 				if not transformed then
@@ -6238,7 +6238,7 @@ run(function()
 		end
 	})
 	GameThemeMode = GameTheme.CreateDropdown({
-		Name = "Theme",
+		Name = "主题",
 		Function = function() end,
 		List = {"Old", "Winter", "Halloween", "Valentines"}
 	})
@@ -6340,7 +6340,7 @@ run(function()
 	table.sort(KillEffectName, function(a, b) return a:lower() < b:lower() end)
 	local KillEffect = {Enabled = false}
 	KillEffect = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		Name = "KillEffect",
+		Name = "击杀特效",
 		Function = function(callback)
 			if callback then
 				task.spawn(function()
@@ -6366,7 +6366,7 @@ run(function()
 		table.insert(modes, i)
 	end
 	KillEffectMode = KillEffect.CreateDropdown({
-		Name = "Mode",
+		Name = "模式",
 		Function = function()
 			if KillEffect.Enabled then
 				KillEffect.ToggleButton(false)
@@ -6376,7 +6376,7 @@ run(function()
 		List = modes
 	})
 	KillEffectList = KillEffect.CreateDropdown({
-		Name = "Bedwars",
+		Name = "起床战争",
 		Function = function()
 			if KillEffect.Enabled then
 				KillEffect.ToggleButton(false)
@@ -6520,7 +6520,7 @@ run(function()
 	})
 	
 	Background = KitESP.CreateToggle({
-		Name = 'Background',
+		Name = '背景',
 		Function = function(callback)
 			if Color and Color.Object then Color.Object.Visible = callback end
 			for _, v in espobjs do
@@ -6530,7 +6530,7 @@ run(function()
 		Default = true
 	})
 	Color = KitESP.CreateColorSlider({
-		Name = 'Background Color',
+		Name = '背景颜色',
 		DefaultValue = 0,
 		DefaultOpacity = 0.5,
 		Function = function(hue, sat, val)
@@ -6853,7 +6853,7 @@ run(function()
 
 	local NameTags = {Enabled = false}
 	NameTags = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		Name = "NameTags",
+		Name = "名字标签",
 		Function = function(callback)
 			if callback then
 				methodused = NameTagsDrawing.Enabled and "Drawing" or "Normal"
@@ -6894,7 +6894,7 @@ run(function()
 				end
 			end
 		end,
-		HoverText = "Renders nametags on entities through walls."
+		HoverText = "在实体上渲染穿透墙壁的名字标签"
 	})
 	for i,v in pairs(Enum.Font:GetEnumItems()) do
 		if v.Name ~= "SourceSans" then
@@ -6907,7 +6907,7 @@ run(function()
 		Function = function() if NameTags.Enabled then NameTags.ToggleButton(false) NameTags.ToggleButton(false) end end,
 	})
 	NameTagsColor = NameTags.CreateColorSlider({
-		Name = "Player Color",
+		Name = "玩家颜色",
 		Function = function(hue, sat, val)
 			if NameTags.Enabled and nametagcolorfuncs[methodused] then
 				nametagcolorfuncs[methodused](hue, sat, val)
@@ -6915,49 +6915,49 @@ run(function()
 		end
 	})
 	NameTagsScale = NameTags.CreateSlider({
-		Name = "Scale",
+		Name = "缩放",
 		Function = function() if NameTags.Enabled then NameTags.ToggleButton(false) NameTags.ToggleButton(false) end end,
 		Default = 10,
 		Min = 1,
 		Max = 50
 	})
 	NameTagsRangeLimit = NameTags.CreateSlider({
-		Name = "Range",
+		Name = "范围",
 		Function = function() end,
 		Min = 0,
 		Max = 1000,
 		Default = 0
 	})
 	NameTagsBackground = NameTags.CreateToggle({
-		Name = "Background",
+		Name = "背景",
 		Function = function() if NameTags.Enabled then NameTags.ToggleButton(false) NameTags.ToggleButton(false) end end,
 		Default = true
 	})
 	NameTagsDisplayName = NameTags.CreateToggle({
-		Name = "Use Display Name",
+		Name = "使用显示名称",
 		Function = function() if NameTags.Enabled then NameTags.ToggleButton(false) NameTags.ToggleButton(false) end end,
 		Default = true
 	})
 	NameTagsHealth = NameTags.CreateToggle({
-		Name = "Health",
+		Name = "健康值",
 		Function = function() if NameTags.Enabled then NameTags.ToggleButton(false) NameTags.ToggleButton(false) end end
 	})
 	NameTagsDistance = NameTags.CreateToggle({
-		Name = "Distance",
+		Name = "距离",
 		Function = function() if NameTags.Enabled then NameTags.ToggleButton(false) NameTags.ToggleButton(false) end end
 	})
 	NameTagsShowInventory = NameTags.CreateToggle({
-		Name = "Equipment",
+		Name = "装备",
 		Function = function() if NameTags.Enabled then NameTags.ToggleButton(false) NameTags.ToggleButton(false) end end,
 		Default = true
 	})
 	NameTagsTeammates = NameTags.CreateToggle({
-		Name = "Teammates",
+		Name = "队友",
 		Function = function() if NameTags.Enabled then NameTags.ToggleButton(false) NameTags.ToggleButton(false) end end,
 		Default = true
 	})
 	NameTagsDrawing = NameTags.CreateToggle({
-		Name = "Drawing",
+		Name = "绘制",
 		Function = function() if NameTags.Enabled then NameTags.ToggleButton(false) NameTags.ToggleButton(false) end end,
 	})
 end)
@@ -6972,7 +6972,7 @@ run(function()
 	local oldc1
 	local oldfunc
 	local nobob = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		Name = "NoBob",
+		Name = "无摇晃",
 		Function = function(callback)
 			local viewmodel = gameCamera:FindFirstChild("Viewmodel")
 			if viewmodel then
@@ -6999,10 +6999,10 @@ run(function()
 				end
 			end
 		end,
-		HoverText = "Removes the ugly bobbing when you move and makes sword farther"
+		HoverText = "移除移动时的达芬摇晃效果，并让剑更远"
 	})
 	nobobdepth = nobob.CreateSlider({
-		Name = "Depth",
+		Name = "深度",
 		Min = 0,
 		Max = 24,
 		Default = 8,
@@ -7013,7 +7013,7 @@ run(function()
 		end
 	})
 	nobobhorizontal = nobob.CreateSlider({
-		Name = "Horizontal",
+		Name = "水平",
 		Min = 0,
 		Max = 24,
 		Default = 8,
@@ -7024,7 +7024,7 @@ run(function()
 		end
 	})
 	nobobvertical= nobob.CreateSlider({
-		Name = "Vertical",
+		Name = "垂直",
 		Min = 0,
 		Max = 24,
 		Default = -2,
@@ -7035,7 +7035,7 @@ run(function()
 		end
 	})
 	rotationx = nobob.CreateSlider({
-		Name = "RotX",
+		Name = "绕X轴旋转",
 		Min = 0,
 		Max = 360,
 		Function = function(val)
@@ -7045,7 +7045,7 @@ run(function()
 		end
 	})
 	rotationy = nobob.CreateSlider({
-		Name = "RotY",
+		Name = "绕Y轴旋转",
 		Min = 0,
 		Max = 360,
 		Function = function(val)
@@ -7055,7 +7055,7 @@ run(function()
 		end
 	})
 	rotationz = nobob.CreateSlider({
-		Name = "RotZ",
+		Name = "绕Z轴旋转",
 		Min = 0,
 		Max = 360,
 		Function = function(val)
@@ -7099,7 +7099,7 @@ run(function()
 	end
 
 	SongBeats = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		Name = "SongBeats",
+		Name = "歌曲节拍",
 		Function = function(callback)
 			if callback then
 				task.spawn(function()
@@ -7126,7 +7126,7 @@ run(function()
 		end
 	})
 	SongBeatsList = SongBeats.CreateTextList({
-		Name = "SongList",
+		Name = "歌曲列表",
 		TempText = "songpath:bpm"
 	})
 	SongBeatsIntensity = SongBeats.CreateSlider({
