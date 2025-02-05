@@ -345,7 +345,7 @@ local function are_installed_2()
 end
 if not are_installed_1() then install_profiles(1) end
 if not are_installed_2() then install_profiles(2) end
-local url = RiseMode and "https://github.com/VapeVoidware/VWRise/" or "https://github.com/VapeVoidware/VoidwareBakup"
+local url = RiseMode and "https://github.com/114S14/VWRise/" or "https://github.com/114S14/VoidwareBakup"
 if not shared.VapeDeveloper then 
 	local commit = "main"
 	for i,v in pairs(game:HttpGet(url):split("\n")) do 
@@ -396,7 +396,7 @@ if not shared.VapeDeveloper then
 end
 if not shared.VapeDeveloper then 
 	local commit = "main"
-	for i,v in pairs(game:HttpGet("https://github.com/VapeVoidware/vapevoidware"):split("\n")) do 
+	for i,v in pairs(game:HttpGet("https://github.com/114S14/vapevoidware"):split("\n")) do 
 		if v:find("commit") and v:find("fragment") then 
 			local str = v:split("/")[5]
 			commit = str:sub(0, str:find('"') - 1)
@@ -425,7 +425,7 @@ local function vapeGithubRequest(scripturl, isImportant)
         end
     end
     local suc, res
-    local url = RiseMode and "https://raw.githubusercontent.com/VapeVoidware/VWRise/" or "https://raw.githubusercontent.com/VapeVoidware/VoidwareBakup/"
+    local url = RiseMode and "https://raw.githubusercontent.com/114S14/VWRise/" or "https://raw.githubusercontent.com/114S14/VoidwareBakup/"
     print(url..readfile(baseDirectory.."commithash2.txt").."/"..scripturl)
     suc, res = pcall(function() return game:HttpGet(url..readfile(baseDirectory.."commithash2.txt").."/"..scripturl, true) end)
     if not suc or res == "404: Not Found" then
