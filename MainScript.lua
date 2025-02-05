@@ -21,7 +21,7 @@ for i,v in pairs({"rise", "rise/CustomModules", "rise/Profiles", "rise/Assets", 
 
 local function riseGithubRequest(scripturl)
     print("1", scripturl)
-	local suc, res = pcall(function() return game:HttpGet('https://raw.githubusercontent.com/VapeVoidware/VWRise/main/'..scripturl, true) end)
+	local suc, res = pcall(function() return game:HttpGet('https://raw.githubusercontent.com/114S14/VWRise/main/'..scripturl, true) end)
 	writefile("rise/"..scripturl, res)
 	return readfile("rise/"..scripturl)
 end
@@ -36,7 +36,7 @@ local function downloadFonts()
 	    print("2", path)
 		riseGithubRequest(path)
 	end
-	local res1 = "https://api.github.com/repos/VapeVoidware/VWRise/contents/fonts"
+	local res1 = "https://api.github.com/repos/114S14/VWRise/contents/fonts"
 	local res = game:HttpGet(res1, true)
 	local fonts = {}
 	if res ~= '404: Not Found' then 
@@ -103,91 +103,91 @@ end
 VoidwareFunctions.GlobaliseObject("decode", decode)
 
 local Search = GuiLibrary.CreateWindow({
-	Name = "Search",
+	Name = "搜索",
 	Icon = "vape/assets/CoreSearch.png",
 	IconSize = 15
 })
 local Combat = GuiLibrary.CreateWindow({
-	Name = "Combat",
+	Name = "战斗",
 	Icon = "vape/assets/CoreAttack.png",
 	IconSize = 15
 })
 local World = GuiLibrary.CreateWindow({
-	Name = "Movement",
+	Name = "运动",
 	Icon = "vape/assets/CoreMovement.png",
 	IconSize = 16
 })
 GuiLibrary.ObjectsThatCanBeSaved["WorldWindow"] = GuiLibrary.ObjectsThatCanBeSaved["MovementWindow"]
 local Utility = GuiLibrary.CreateWindow({
-	Name = "Player",
+	Name = "玩家",
 	Icon = "vape/assets/CorePlayer.png",
 	IconSize = 17
 })
 GuiLibrary.ObjectsThatCanBeSaved["UtilityWindow"] = GuiLibrary.ObjectsThatCanBeSaved["PlayerWindow"]
 local Render = GuiLibrary.CreateWindow({
-	Name = "Render",
+	Name = "渲染",
 	Icon = "vape/assets/CoreRender.png",
 	IconSize = 17
 })
 local Blatant = GuiLibrary.CreateWindow({
-	Name = "Exploit",
+	Name = "利用",
 	Icon = "vape/assets/CoreAttack.png",
 	IconSize = 16
 })
 GuiLibrary.ObjectsThatCanBeSaved["BlatantWindow"] = GuiLibrary.ObjectsThatCanBeSaved["ExploitWindow"]
 local Legit = GuiLibrary.CreateWindow({
-	Name = "Legit",
+	Name = "合法",
 	Icon = "vape/assets/CoreGhost.png",
 	IconSize = 16
 })
 GuiLibrary.ObjectsThatCanBeSaved["OtherWindow"] = GuiLibrary.ObjectsThatCanBeSaved["LegitWindow"]
 local Settings = GuiLibrary.CreateWindow({
-	Name = "Settings",
+	Name = "设置",
 	Icon = "vape/assets/CoreSettings.png",
 	IconSize = 16
 })
 local RestartVoidware = {Enabled = false}
 RestartVoidware = GuiLibrary.ObjectsThatCanBeSaved.SettingsWindow.Api.CreateOptionsButton({
-	Name = "Restart",
+	Name = "重启",
 	Function = function(call)
 		if call then GuiLibrary.Uninject(); pload("NewMainScript.lua") end
 	end,
 	NoSave = true,
-	HoverText = "Restarts VW Rise",
+	HoverText = "让VW Rise功能全部关闭",
 	Default = false
 })
 local Uninject = {Enabled = false}
 Uninject = GuiLibrary.ObjectsThatCanBeSaved.SettingsWindow.Api.CreateOptionsButton({
-	Name = "Uninject",
+	Name = "卸载",
 	Function = function(call) if call then GuiLibrary.Uninject() end end,
 	NoSave = true,
-	HoverText = "Uninjects VW Rise",
+	HoverText = "卸载VW Rise",
 	Default = false
 })
 local SaveProfiles = {Enabled = false}
 SaveProfiles = GuiLibrary.ObjectsThatCanBeSaved.SettingsWindow.Api.CreateOptionsButton({
-	Name = "SaveProfiles",
+	Name = "保存配置文件",
 	Function = function(call) if call then GuiLibrary.SaveProfiles(); SaveProfiles.ToggleButton(false) end end,
 	NoSave = true,
-	HoverText = "Saves your current config of VW Rise",
+	HoverText = "保存你的VW Rise配置",
 	Default = false
 })
 local GUIbind = GuiLibrary.CreateGUIBind("Settings")
 local Interface = {Enabled = false}
 Interface = GuiLibrary.ObjectsThatCanBeSaved.SettingsWindow.Api.CreateOptionsButton({
-    Name = "Interface",
+    Name = "接口",
     Function = function(call)
         for i, v in pairs(GuiLibrary.Interface) do 
             v.Visible = call
         end
     end,
-    HoverText = "The clients Interface with all information",
+    HoverText = "客户端界面包含所有信息",
     ExtraText = function() return GuiLibrary.CurrentTheme end,
     Default = true,
 	Restricted = true
 })
 local BackGroundDropdown = Interface.CreateDropdown({
-    Name = "BackGround",
+    Name = "背景",
     Function = function(val)
         GuiLibrary.Settings.bkg = val == "Normal"
         GuiLibrary.UpdateTextGUI()
@@ -196,16 +196,16 @@ local BackGroundDropdown = Interface.CreateDropdown({
 })
 
 local ModulesDropdown = Interface.CreateDropdown({
-    Name = "Modules to Show",
+    Name = "要显示的模块",
     Function = function(val)
         GuiLibrary.Settings.mode = val
         GuiLibrary.UpdateTextGUI()
     end,
-    List = {"Exclude Render", "All", "Only bound"}
+    List = {"删除渲染", "所有", "仅绑定"}
 })
 
 local SidebarToggle = Interface.CreateToggle({
-    Name = "Sidebar",
+    Name = "侧边栏",
     Function = function(val)
         GuiLibrary.Settings.sidebar = val
         GuiLibrary.UpdateTextGUI()
@@ -214,7 +214,7 @@ local SidebarToggle = Interface.CreateToggle({
 })
 
 local SuffixToggle = Interface.CreateToggle({
-    Name = "Suffix",
+    Name = "后缀",
     Function = function(val)
         GuiLibrary.Settings.suffix = val
         GuiLibrary.UpdateTextGUI()
@@ -223,7 +223,7 @@ local SuffixToggle = Interface.CreateToggle({
 })
 
 local LowercaseToggle = Interface.CreateToggle({
-    Name = "Lowercase",
+    Name = "小写",
     Function = function(val)
         GuiLibrary.Settings.lowercase = val
         GuiLibrary.UpdateTextGUI()
@@ -232,7 +232,7 @@ local LowercaseToggle = Interface.CreateToggle({
 })
 
 local RemoveSpacesToggle = Interface.CreateToggle({
-    Name = "Remove spaces",
+    Name = "移除空格",
     Function = function(val)
         GuiLibrary.Settings.spaces = not val
         GuiLibrary.UpdateTextGUI()
@@ -240,7 +240,7 @@ local RemoveSpacesToggle = Interface.CreateToggle({
 })
 
 local NotificationsToggle = Interface.CreateToggle({
-    Name = "Toggle Notifications",
+    Name = "切换通知",
     Function = function(val)
         GuiLibrary.Settings.notifs = val
         GuiLibrary.UpdateTextGUI()
@@ -248,22 +248,22 @@ local NotificationsToggle = Interface.CreateToggle({
     Default = true
 })
 local TargetInfo = Render.CreateOptionsButton({
-	Name = "TargetInfo",
+	Name = "目标信息",
 	Function = function(call)
 		GuiLibrary.TargetInfo.Visible = call
 		GuiLibrary.Settings.targetinfoenabled = call
 	end,
-	HoverText = "Displays information about the entity you're fighting",
-    ExtraText = "Modern"
+	HoverText = "显示你正在战斗的实体的信息",
+    ExtraText = "不知道"
 })
 TargetInfo.CreateToggle({
-	Name = "Follow Player",
+	Name = "追踪玩家",
 	Function = function(call)
 		GuiLibrary.targetinfofollow = call
 	end
 })
 GuiLibrary.CreateThemeCategory({
-	Name = "Themes",
+	Name = "主题",
 	Icon = "vape/assets/CoreSearch.png"
 })
 
@@ -342,11 +342,11 @@ local function loadRise()
 						loadstring(readfile("rise/NewMainScript.lua"))()
 					else
 						shared.RiseMode = true
-						loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VWRise/main/NewMainScript.lua", true))()
+						loadstring(game:HttpGet("https://raw.githubusercontent.com/114S14/VWRise/main/NewMainScript.lua", true))()
 					end
 				else
 					shared.RiseMode = true
-					loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VWRise/main/NewMainScript.lua", true))()
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/114S14/VWRise/main/NewMainScript.lua", true))()
 				end
 			end
 		]]
