@@ -2316,7 +2316,7 @@ run(function()
 		HoverText = "Extends attack reach"
 	})
 	ReachValue = Reach.CreateSlider({
-		Name = "Reach",
+		Name = "范围",
 		Min = 0,
 		Max = 18,
 		Function = function(val)
