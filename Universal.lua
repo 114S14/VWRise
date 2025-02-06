@@ -3090,11 +3090,11 @@ run(function()
 	end
 
 	Killaura = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-		Name = "Killaura",
+		Name = "杀戮光环",
 		Function = function(callback)
 			if callback then
 				if KillauraRangeCirclePart then KillauraRangeCirclePart.Parent = gameCamera end
-				RunLoops:BindToHeartbeat("Killaura", function()
+				RunLoops:BindToHeartbeat("杀戮光环", function()
 					for i,v in pairs(KillauraBoxes) do
 						if v.Adornee then
 							local onex, oney, onez = v.Adornee.CFrame:ToEulerAnglesXYZ()
@@ -3192,22 +3192,22 @@ run(function()
 				if KillauraRangeCirclePart then KillauraRangeCirclePart.Parent = nil end
 			end
 		end,
-		HoverText = "Attack players around you\nwithout aiming at them."
+		HoverText = "攻击周围玩家\n无需瞄准他们"
 	})
 	KillauraMethod = Killaura.CreateDropdown({
-		Name = "Mode",
-		List = {"Normal", "Bypass", "Root Only"},
+		Name = "模式",
+		List = {"通常", "绕过", "仅Root用户"},
 		Function = function() end
 	})
 	KillauraCPS = Killaura.CreateTwoSlider({
-		Name = "Attacks per second",
+		Name = "每秒攻击",
 		Min = 1,
 		Max = 20,
 		Default = 8,
 		Default2 = 12
 	})
 	KillauraRange = Killaura.CreateSlider({
-		Name = "Attack range",
+		Name = "攻击范围",
 		Min = 1,
 		Max = 150,
 		Function = function(val)
@@ -3217,14 +3217,14 @@ run(function()
 		end
 	})
 	KillauraAngle = Killaura.CreateSlider({
-		Name = "Max angle",
+		Name = "最大角度",
 		Min = 1,
 		Max = 360,
 		Function = function(val) end,
 		Default = 90
 	})
 	KillauraColor = Killaura.CreateColorSlider({
-		Name = "Target Color",
+		Name = "目标颜色",
 		Function = function(hue, sat, val)
 			for i,v in pairs(KillauraBoxes) do
 				v.Color3 = Color3.fromHSV(hue, sat, val)
@@ -3236,25 +3236,25 @@ run(function()
 		Default = 1
 	})
 	KillauraButtonDown = Killaura.CreateToggle({
-		Name = "Require mouse down",
+		Name = "需要按下鼠标",
 		Function = function() end
 	})
 	KillauraTarget = Killaura.CreateToggle({
-        Name = "Show target",
+        Name = "显示目标",
         Function = function(callback) end,
-		HoverText = "Shows a red box over the opponent."
+		HoverText = "在对手上方显示一个红色方框."
     })
 	KillauraPrediction = Killaura.CreateToggle({
-		Name = "Prediction",
+		Name = "预测",
 		Function = function() end
 	})
 	KillauraFakeAngle = Killaura.CreateToggle({
-        Name = "Face target",
+        Name = "面朝目标",
         Function = function() end,
-		HoverText = "Makes your character face the opponent."
+		HoverText = "使你的角色面向对手"
     })
 	KillauraRangeCircle = Killaura.CreateToggle({
-		Name = "Range Visualizer",
+		Name = "范围可视化",
 		Function = function(callback)
 			if callback then
 				pcall(function()
@@ -3282,7 +3282,7 @@ run(function()
 	local LongJumpBoost = {Value = 1}
 	local LongJumpChange = true
 	LongJump = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-		Name = "LongJump",
+		Name = "跳远",
 		Function = function(callback)
 			if callback then
 				if entityLibrary.isAlive and entityLibrary.character.Humanoid.FloorMaterial ~= Enum.Material.Air then
